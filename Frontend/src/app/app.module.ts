@@ -1,30 +1,26 @@
-import { AppMaterialModule } from './app.material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import { ContractService } from './services/contract/contract.service';
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { rootRouterConfig } from './app.route';
-// UI
-import { UiModule} from './ui/ui.module';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { FirComponent } from './fir/fir.component';
+import { SignupComponent } from './signup/signup.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    FirComponent,
+    SignupComponent,
+    NavComponent
   ],
   imports: [
-    AppMaterialModule,
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: false }),
-    UiModule
+    AppRoutingModule
   ],
-  providers: [
-    ContractService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
