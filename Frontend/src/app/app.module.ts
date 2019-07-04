@@ -8,6 +8,8 @@ import { FirComponent } from './fir/fir.component';
 import { SignupComponent } from './signup/signup.component';
 import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from './contact/contact.component';
+import { MasterPassResetComponent } from './master-pass-reset/master-pass-reset.component';
+import { MasterPageComponent } from './master-page/master-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ContactComponent } from './contact/contact.component';
     FirComponent,
     SignupComponent,
     NavComponent,
-    ContactComponent
+    ContactComponent,
+    MasterPassResetComponent,
+    MasterPageComponent
   ],
   imports: [
     BrowserModule,
