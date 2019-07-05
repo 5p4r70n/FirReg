@@ -10,6 +10,8 @@ import { NavComponent } from './nav/nav.component';
 import { ContactComponent } from './contact/contact.component';
 import { MasterPassResetComponent } from './master-pass-reset/master-pass-reset.component';
 import { MasterPageComponent } from './master-page/master-page.component';
+import {HttpClientModule} from "@angular/common/http"
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { MasterPageComponent } from './master-page/master-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
