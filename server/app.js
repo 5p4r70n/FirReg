@@ -10,5 +10,5 @@ web3.eth.getAccounts().then(accounts=>{
 })
 
 app.listen(PORT, function (req, res) {
-    console.log("Server Started At 3000")
+    console.log("Server Started At "+PORT)
 })

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http"
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-master-pass-reset',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasterPassResetComponent implements OnInit {
 
-  constructor() { }
+  MasterPass=""
+
+  constructor() {
+   }
 
   ngOnInit() {
+
+      
+  }
+  onSubmit() {
+    console.log(this.MasterPass)
   }
 
 }

@@ -2,15 +2,18 @@
   <div class="row">
     <div class="col-lg-2"></div>
     <div class="col-lg-8">
+      <form #masterPassForm="ngForm" (ngSubmit)="onSubmit()">
+        {{masterPassForm.value | json}}
       <table class="table">
         <tr>
           <td>
-            <input class="form-control ds-input" type="text" name="newpass"
-              placeholder="Set Or Reset Your Master Password">
+            <input class="form-control ds-input" type="text" name="MasterPass" id="MasterPass"
+              placeholder="Set Or Reset Your Master Password" [(ngModel)] ="MasterPass">
           </td>
           <td> <button class="btn btn-success">Done</button></td>
         </tr>
       </table>
+    </form>
     </div>
     <div class="col-lg-2"></div>
   </div>
