@@ -9,17 +9,27 @@ import { from } from 'rxjs';
 })
 export class MasterPassResetComponent implements OnInit {
 
-  MasterPass=""
+  MasterPass = '';
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
    }
 
   ngOnInit() {
 
-      
+
   }
   onSubmit() {
-    console.log(this.MasterPass)
+
+    console.log(this.MasterPass);
+    let pass=this.MasterPass
+    let url = "http://127.0.0.1:3000/MasterPass";
+    console.log(pass)
+    this.http.post(url,{pass}).subscribe(data=>function(data){
+      console.log(data);
+    })
+
   }
 
 }
