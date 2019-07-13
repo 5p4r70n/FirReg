@@ -10,15 +10,26 @@ app.use(bodyparser.urlencoded({extended:false}));
 
 
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  
+
 
 web3.eth.getAccounts().then(accounts=>{
     console.log(accounts[0]);
 })
 
-app.post("/MasterPass",function(req,res){
+app.post("/MasterPassReset",function(req,res){
     console.log(req.body);
 
 } )
+
+app.post("/fir",function(req,res){
+    console.log(req.body);
+})
 
 app.listen(PORT, function (req, res) {
     console.log("Server Started At "+PORT)

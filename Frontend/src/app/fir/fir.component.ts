@@ -17,20 +17,24 @@ export class FirComponent implements OnInit {
   CType = '';
   WriteUp = '';
   image: File;
-  msgData:Object={data:false};
+  msgData: Object = {data: false};
 
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
   }
 
   onSubmit(){
-    console.log ('Haiii');
-    let newFir ={Prathy:this.Prathy,Vaadi:this.Vaadi,Tittle:this.Tittle,WriteUp:this.WriteUp,image:this.image}
+    let url='http://127.0.0.1:3000/fir'
+    const newFir ={Prathy: this.Prathy,Vaadi:this.Vaadi,Tittle:this.Tittle,WriteUp:this.WriteUp,image:this.image}
     console.log(newFir);
+    this.http.post(url,{FirItem: newFir}).subscribe(data=>function(data){
+      console.log(data);
+    })
+
   }
 
 }
