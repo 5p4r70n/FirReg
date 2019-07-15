@@ -26,7 +26,7 @@ export class MasterPassResetComponent implements OnInit {
     let pass=this.MasterPass
     let url = "http://127.0.0.1:3000/MasterPassReset";
     console.log(pass)
-    this.http.post(url,{pass}).subscribe(data=>function(data){
+    this.http.post(url, {MP : pass}).subscribe((data: any) => {
       console.log(data);
     })
 
