@@ -13,8 +13,12 @@ pragma solidity ^0.5.0;
         owner=msg.sender;    //declaring ower as message sender
     }
     
-    function set(string memory _password) public onlyMe {  //password changing function that only done my me 
+    function SetMP(string memory _password) public onlyMe {  //password changing function that only done my me 
         password = _password;
     }
+    function GetMP() public view onlyMe returns (string memory _password) {
+        return _password = password;
+    }
+        
     
 }

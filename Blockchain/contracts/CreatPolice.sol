@@ -1,7 +1,10 @@
 pragma solidity ^0.5.0;
 
+import "./CaseReg.sol";
+import "./MasterPass.sol";
 
-contract CrtPolice {
+
+contract CrtPolice is CaseReg,MasterPass {
     
     
     
