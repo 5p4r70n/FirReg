@@ -29,9 +29,9 @@ export class FirComponent implements OnInit {
 
   onSubmit(){
     let url='http://127.0.0.1:3000/fir'
-    const newFir ={Prathy: this.Prathy,Vaadi:this.Vaadi,Tittle:this.Tittle,WriteUp:this.WriteUp,image:this.image}
+    const newFir ={Prathy: this.Prathy,Vaadi:this.Vaadi,Ctype : this.CType,Tittle:this.Tittle,WriteUp:this.WriteUp}
     console.log(newFir);
-    this.http.post(url,JSON.stringify({FirItem: newFir})).subscribe(data=>function(data){
+    this.http.post(url,{FirItem: newFir }).subscribe(data=>function(data){
       console.log(data);
     })
 

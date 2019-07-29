@@ -31,7 +31,7 @@ contract CrtPolice is CaseReg,MasterPass {
         string Password;
     }
     
-    mapping(uint=>PoSt) policemap;
+    mapping(uint=>PoSt) public policemap;
     
     function NewPoSt(string memory _name,address _StatAddr,string memory _Password) public onlyMe{
         PSNo +=1;
@@ -39,5 +39,6 @@ contract CrtPolice is CaseReg,MasterPass {
         
         
     }
+    
     
 }

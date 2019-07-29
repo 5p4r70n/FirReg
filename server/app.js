@@ -5,9 +5,9 @@ const PORT = process.env.PORT || 3000;
 
 var path = require('path');
 
-//ipfs section
-const IPFS =require('ipfs-mini');
-const ipfs = new IPFS({host:'ipfs.infura.io', port:5001,protocol:'https'}); 
+// ipfs section
+// const IPFS =require('ipfs-mini');
+// const ipfs = new IPFS({host:'ipfs.infura.io', port:5001,protocol:'https'}); 
 
 //web3 and connecting to chain
 var Web3 = require('web3');
@@ -17,6 +17,8 @@ var web3 = new Web3(url);
 ContractAddress = MyContractJSON.networks[5777].address;
 abi = MyContractJSON.abi;
 MyContract = new web3.eth.Contract(abi, ContractAddress);
+
+console.log("contract address  " + ContractAddress);
 
 //bodyparser 
 var bodyParser = require("body-parser");
@@ -37,7 +39,7 @@ app.use(function (req, res, next) {
 //for getting owner account
 async function OW() {
     addr = await web3.eth.getAccounts();
-    console.log(addr[0] + " = inside");
+    // console.log(addr[0] + " = inside");
     var OWA = addr[0];
     return OWA; //returns the owner account / 1st account
 }
@@ -49,14 +51,17 @@ async function OW() {
 app.post("/MasterPassReset", function (req, res) {
     console.log(req.body.MP);
 
-    OW().then((OwnerAddr)=> {
-        MyContract.methods.SetMP(req.body.MP).send({from: OwnerAddr,gas: 6000000}).then((data) => {
+    OW().then((OwnerAddr) => {
+        MyContract.methods.SetMP(req.body.MP).send({
+            from: OwnerAddr,
+            gas: 6000000
+        }).then((data) => {
             console.log("MP send data = " + data)
         })
 
-    // MyContract.methods.GetMP().call({from: OwnerAddr}).then((data) => {
-    //     console.log(data + "from the chanina");
-    // })
+        // MyContract.methods.GetMP().call({from: OwnerAddr}).then((data) => {
+        //     console.log(data + "from the chanina");
+        // })
 
     })
 })
@@ -64,15 +69,34 @@ app.post("/MasterPassReset", function (req, res) {
 
 app.post("/fir", function (req, res) {
     console.log(req.body);
-    let FileObj = req.body.image;
-    ipfs.add(FileObj,(err,hash) =>{
-        if (err) {
-            console.log(err);
-        }
-        else {
-            console.log(hash);
-        }
+    console.log(req.body.FirItem.Prathy);
+    Ctype = parseInt(req.body.FirItem.Ctype)
+    console.log(Ctype);
+    OW().then((OwnerAddr) => {
+        MyContract.methods.AddPetition(req.body.FirItem.Prathy, req.body.FirItem.Vaadi, req.body.FirItem.Tittle, Ctype, req.body.FirItem.WriteUp).send({
+            from: OwnerAddr,
+            gas: 6000000
+        }).then((data) => {
+            console.log(data)
+        }).catch((err) => {
+            console.log("error in addPetition = " + err);
+        })
     })
+
+    app.post("/signUp", async function (req, res) {
+        OwnerAddr = await OW()
+        address = await web3.eth.personal.newAccount(req.body.station.Password)
+        console.log(address + "neww " + "password =" + req.body.station.Password)
+        NewPoSt = await MyContract.methods.NewPoSt(req.body.station.StationName, address, req.body.station.Password).send({
+            from: OwnerAddr,
+            gas: 6000000
+        })
+        err = await NewPoSt.catch()
+        console.log(err);
+
+    })
+
+
 
 })
 
