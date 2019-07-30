@@ -1,4 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http'
+import {
+  Router
+} from "@angular/router"
+import {
+  from
+} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +19,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  Password: string;
+ 
 
-  ngOnInit() {
-  }
 
-}
+  constructor(
+    private http: HttpClient, private router: Router
+  ) {}
+
+  ngOnInit() {}
+
+
+  async login() {
+    console.log(this.Password)
+    if (this.Password === '123')
+    {
+      this.router.navigate(['/MasterPage'])
+    } else {
+      console.log("Password Missmatch");
+      }
+
+  }}

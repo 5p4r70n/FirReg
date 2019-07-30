@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-master-page',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasterPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  ngOnInit() {
+   ngOnInit() {
+
   }
+
+  async getAll (){
+    const url= "http://127.0.0.1:3000/getCase"
+    var caseData = await this.http.get(url)
+    console.log('hai')
+    console.log(caseData);
+  }
+
 
 }

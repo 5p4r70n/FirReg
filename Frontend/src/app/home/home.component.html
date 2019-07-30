@@ -6,17 +6,22 @@
         <div class="row">
           <div class="col-lg-2"></div>
           <div class="col-lg-8">
-            <table class="table">
-              <tr>
-                <td><input class="form-control ds-input" type="text" placeholder="Enter Master Password"> </td>
-                <td> <button> Login</button></td>
-              </tr>
-              <tr>
-                <td>
-                  <h6><a href="MasPasReset">First Start Or Reset Password Click Here</a> </h6>
-                </td>
-              </tr>
-            </table>
+            <form class="loginForm" #loginForm="ngForm" (ngSubmit)='login()'>
+              <table class="table">
+
+                <tr>
+                  <td><input class="form-control ds-input" type="text" name="Password"
+                      placeholder="Enter Master Password" [(ngModel)]="Password"> </td>
+                  <td> <button> Login</button></td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <h6><a href="MasPasReset">First Start Or Reset Password Click Here</a> </h6>
+                  </td>
+                </tr>
+              </table>
+            </form>
           </div>
           <div class="col-lg-2"></div>
         </div>

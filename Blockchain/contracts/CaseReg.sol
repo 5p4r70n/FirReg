@@ -25,7 +25,4 @@ contract CaseReg{
         return _Pgno = Pgno;
         
     } 
-    
-    
-    
 }

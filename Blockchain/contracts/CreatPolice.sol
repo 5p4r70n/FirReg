@@ -24,7 +24,7 @@ contract CrtPolice is CaseReg,MasterPass {
     
     
     
-    uint PSNo=0 ; //each station adding it will increase
+    uint public  PSNo=0 ; //each station adding it will increase
     struct PoSt{
         string name;
         address StatAddr;

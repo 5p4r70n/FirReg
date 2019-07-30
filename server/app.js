@@ -75,13 +75,18 @@ app.post("/fir", function (req, res) {
     OW().then((OwnerAddr) => {
         MyContract.methods.AddPetition(req.body.FirItem.Prathy, req.body.FirItem.Vaadi, req.body.FirItem.Tittle, Ctype, req.body.FirItem.WriteUp).send({
             from: OwnerAddr,
-            gas: 6000000
+            gas: 600000000
         }).then((data) => {
             console.log(data)
         }).catch((err) => {
             console.log("error in addPetition = " + err);
         })
     })
+    web3.eth.getBlock("latest", false, (error, result) => {
+        console.log(result.gasLimit + "gas limt")
+        // => 8000029
+      });
+})
 
     app.post("/signUp", async function (req, res) {
         OwnerAddr = await OW()
@@ -96,9 +101,25 @@ app.post("/fir", function (req, res) {
 
     })
 
+    app.get("/getMpass" ,async function(req,res){
+        OwnerAddr=await OW();
+        MP=await MyContract.methods.GetMP().call({from: OwnerAddr,gas:6000000});
+        res.send(MP);
+        console.log(MP + "Master pass");
+    })
 
-
-})
+    app.get("/getCase", async function(req,res) {
+        OwnerAddr=await OW();
+        hPgNo= await MyContract.methods.Pgno.call({from:OwnerAddr,gas: 6000000})
+        PgNo= await web3.utils.toDecimal(hPgNo);
+        console.log(PgNo);
+        pdata= await MyContract.methods.MPetition(PgNo).call({from:OwnerAddr,gas:6000000})
+        console.log(pdata);
+        console.log(pdata.Prathy);
+        
+        res.send(pdata);
+        
+    })
 
 app.listen(PORT, function (req, res) {
     console.log("Server Started At " + PORT)
