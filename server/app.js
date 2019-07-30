@@ -110,14 +110,17 @@ app.post("/fir", function (req, res) {
 
     app.get("/getCase", async function(req,res) {
         OwnerAddr=await OW();
+        caseData = new Array();
         hPgNo= await MyContract.methods.Pgno.call({from:OwnerAddr,gas: 6000000})
         PgNo= await web3.utils.toDecimal(hPgNo);
         console.log(PgNo);
-        pdata= await MyContract.methods.MPetition(PgNo).call({from:OwnerAddr,gas:6000000})
-        console.log(pdata);
-        console.log(pdata.Prathy);
-        
-        res.send(pdata);
+        for (i=1;i<=PgNo;i++){
+            pdata= await MyContract.methods.MPetition(i).call({from:OwnerAddr,gas:6000000})
+            console.log(pdata);
+            await caseData.push(pdata)
+                            }
+        console.log(caseData + "after for loop")
+        res.send(caseData);
         
     })
 

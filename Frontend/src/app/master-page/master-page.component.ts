@@ -8,20 +8,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MasterPageComponent implements OnInit {
 
+  cF: any;
+
   constructor(
     private http: HttpClient
   ) { }
 
    ngOnInit() {
-
-  }
-
-  async getAll (){
     const url= "http://127.0.0.1:3000/getCase"
-    var caseData = await this.http.get(url)
-    console.log('hai')
-    console.log(caseData);
+    this.http.get(url).subscribe((res)=>{
+    // console.log(res);
+    this.cF= res;
+    console.log(res[0].Prathy);
+  })
+
   }
 
-
+  getAll (){
+  }
 }

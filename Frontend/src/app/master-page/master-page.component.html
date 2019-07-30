@@ -9,7 +9,25 @@
           <td><button (click)='getAll()' > show all cases</button></td>
         </tr>
       </table>
-    </div>
+    <table>
+      <tr>
+        <th>Indenx</th>
+        <th>Prathy</th>
+        <th>vaadi</th>
+        <th>tittle</th>
+        <th>case type</th>
+        <th>write up</th>
+      </tr>
+      <tr *ngFor="let cf of cF;let i = index" [attr.data-index]="i">
+        <td>{{i}}</td>
+        <td> {{cf.Prathy}}</td>
+        <td>{{cf.Vaadi}}</td>
+        <td>{{cf.Tittle}}</td>
+        <td>{{cf.Casetype}}</td>
+        <td>{{cf.WriteUp}}</td>
+
+      </tr>
+    </table>
     <div class="col-lg-4"></div>
     <div class="col-lg-4"></div>
   </div>
