@@ -20,7 +20,7 @@ import {
 export class HomeComponent implements OnInit {
 
   Password: string;
- 
+  MasterPass: string;
 
 
   constructor(
@@ -30,13 +30,18 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
 
-  async login() {
+  login() {
+    const url= 'http://127.0.0.1:3000/getMpass';
+    this.http.get(url).subscribe((res : string) => {
+      console.log(res[0]);
+      this.MasterPass = res[0];
+    })
     console.log(this.Password)
-    if (this.Password === '123')
+    if (this.Password === this.MasterPass)
     {
       this.router.navigate(['/MasterPage'])
     } else {
-      console.log("Password Missmatch");
+      console.log('Password Missmatch');
       }
 
   }}

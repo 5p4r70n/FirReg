@@ -103,7 +103,9 @@ app.post("/fir", function (req, res) {
 
     app.get("/getMpass" ,async function(req,res){
         OwnerAddr=await OW();
-        MP=await MyContract.methods.GetMP().call({from: OwnerAddr,gas:6000000});
+        MP = new Array();
+        Mp=await MyContract.methods.GetMP().call({from: OwnerAddr,gas:6000000});
+        MP.push(Mp);
         res.send(MP);
         console.log(MP + "Master pass");
     })

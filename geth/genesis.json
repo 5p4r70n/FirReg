@@ -1,0 +1,6 @@
+{
+"difficulty": "0x400",
+"alloc": { "<your address>": { "balance": "0x300000" } },
+"gasLimit": "0xfffffffffffff",
+"config": {"chainId": 5777}
+}
