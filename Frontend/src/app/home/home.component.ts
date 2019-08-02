@@ -27,7 +27,9 @@ export class HomeComponent implements OnInit {
     private http: HttpClient, private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
 
   login() {

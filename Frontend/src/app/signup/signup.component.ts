@@ -23,8 +23,9 @@ private http: HttpClient
     const url = 'http://127.0.0.1:3000/signUp';
     let station =  {StationName : this.StationName,Password: this.Password};
     this.http.post(url,{station}).subscribe(data =>  function(data){
-      console.log(data)
+      console.log('Data');
     })
+    console.log('Account Created');
 
   }
 
