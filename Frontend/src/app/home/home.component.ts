@@ -27,8 +27,13 @@ export class HomeComponent implements OnInit {
     private http: HttpClient, private router: Router
   ) {}
 
-  ngOnInit() {
-    
+  async ngOnInit() {
+    const url = ' http://127.0.0.1:3000/getPoSt';
+    var get = this.http.get(url);
+    var res = get.subscribe();
+    console.log(res + " policestation return from server") ;
+
+
   }
 
 

@@ -142,6 +142,21 @@ app.post("/fir", function (req, res) {
         
     })
 
+    app.get("/getPoSt",async function (req,res) {
+        OwnerAddr = await OW();
+        PoliceStation = new Array();
+        PSno = await MyContract.methods.PSNo.call({from:OwnerAddr,gas : 6000000 });
+        console.log(PSno + "police station no");
+
+        //getting all police station and add it to PoliceStation array
+            for (i=0;i<=PSno;i++){
+                Station = await MyContract.methods.policemap(i).call({from : OwnerAddr ,gas : 6000000});
+                console.log(Station + " police station details inside loop")
+                await PoliceStation.push(Station)
+            }
+         res.send(PoliceStation);
+    })
+
 app.listen(PORT, function (req, res) {
     console.log("Server Started At " + PORT)
 })

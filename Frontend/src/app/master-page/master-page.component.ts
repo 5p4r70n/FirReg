@@ -17,7 +17,7 @@ export class MasterPageComponent implements OnInit {
    ngOnInit() {
     const url= "http://127.0.0.1:3000/getCase"
     this.http.get(url).subscribe((res)=>{
-    // console.log(res);
+    console.log(res + "Master Page response");
     this.cF= res;
     console.log(res[0].Prathy);
   })
