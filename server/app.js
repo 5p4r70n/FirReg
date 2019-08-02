@@ -115,11 +115,27 @@ app.post("/fir", function (req, res) {
         caseData = new Array();
         hPgNo= await MyContract.methods.Pgno.call({from:OwnerAddr,gas: 6000000})
         PgNo= await web3.utils.toDecimal(hPgNo);
-        console.log(PgNo);
+        console.log(PgNo + 'Page No');
         for (i=1;i<=PgNo;i++){
             pdata= await MyContract.methods.MPetition(i).call({from:OwnerAddr,gas:6000000})
-            console.log(pdata);
+            console.log(pdata.Casetype + "inside loop caseType");
+                if (pdata.Casetype=== 0){
+                    pdata.Casetype = "Criminal";
+                }
+                else if (pdata.Casetype=== 1){
+                    pdata.Casetype="Civil"
+                }
+                else if (pdata.Casetype=== 2){
+                    pdata.Casetype="Narcotic"
+                }
+                else {
+                    pdata.Casetype="Terririst"
+                }
+
+                console.log(pdata + "after ifelse")
+
             await caseData.push(pdata)
+            console.log(pdata + "after pushing pdata")
                             }
         console.log(caseData + "after for loop")
         res.send(caseData);

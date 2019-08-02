@@ -1989,12 +1989,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xEaD0f11D5c59A10B5F892FB53B6A56caFD272546",
-      "transactionHash": "0x2779e947cadedd49d13ec09bd665f8235439859ea77995759f4e9e8c1c97723b"
+      "address": "0x66B480885398802AE835482082a7b882322E3E05",
+      "transactionHash": "0x4494f4d0069ccad5664c35ddbc4fd360ae75110b817aaeb17c4647a00d31a694"
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-08-01T17:59:59.494Z",
+  "updatedAt": "2019-08-01T18:57:26.728Z",
   "devdoc": {
     "methods": {}
   },
