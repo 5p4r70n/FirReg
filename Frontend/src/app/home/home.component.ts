@@ -19,23 +19,28 @@ import {
 })
 export class HomeComponent implements OnInit {
 
-  Password: string;
-  MasterPass: string;
+  Password: string; // received from frontend
+  MasterPass: string; // received from server
+
+  Station:any; //respose received from server
+  StationAddr: any; // received from frntend
+  StPass: any; //received from frnt end
+
 
 
   constructor(
     private http: HttpClient, private router: Router
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() { // this will load the station lists from blockchain on startup
     const url = ' http://127.0.0.1:3000/getPoSt';
-    var get = this.http.get(url);
-    var res = get.subscribe();
-    console.log(res + " policestation return from server") ;
-
+    this.http.get(url).subscribe((res)=>{
+      // console.log(res + "Police station response");
+      this.Station= res;
+      //console.log(res[1].name + "response" );
+    })
 
   }
-
 
   login() {
     const url= 'http://127.0.0.1:3000/getMpass';
@@ -51,4 +56,10 @@ export class HomeComponent implements OnInit {
       console.log('Password Missmatch');
       }
 
-  }}
+  }
+
+  StLog() {
+
+
+  }
+}

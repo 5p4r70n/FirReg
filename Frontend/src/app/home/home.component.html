@@ -35,28 +35,28 @@
         <div class="row">
           <div class="col-lg-2"></div>
           <div class="class lg 8" layout-fill layout-align="center center">
-            <table class="table">
-              <tr>
-                <td>
-                  <select class="custom-select">
-                    <OPtion selected>Select Your Station</OPtion>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audidgdfgfdhfghfghgjghjghjghj</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td><input class="form-control ds-input" type="text" placeholder="Enter Password"></td>
-              </tr>
-              <tr>
-                <td>
-                  <button type="button" class="btn btn-success">Login</button>
-                </td>
-
-              </tr>
-            </table>
+            <form class="StLog" #StLog="ngForm" (ngSubmit)='StLog()'>
+              {{StLog.value | json }}
+              <table class="table">
+                <tr>
+                  <td>
+                    <select class="custom-select" name="StationAddr"  [(ngModel)]="StationAddr">
+                      <option selected>Select Your Station</option>
+                      <option value={{St.StatAddr}} *ngFor="let St of Station">{{St.name}}</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input class="form-control ds-input" type="text" name="StPass" placeholder="Enter Password"
+                      [(ngModel)]="StPass"></td>
+                </tr>
+                <tr>
+                  <td>
+                    <button type="submit" class="btn btn-success">Login</button>
+                  </td>
+                </tr>
+              </table>
+            </form>
           </div>
         </div>
       </div>
