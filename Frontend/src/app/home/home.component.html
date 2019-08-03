@@ -35,27 +35,20 @@
         <div class="row">
           <div class="col-lg-2"></div>
           <div class="class lg 8" layout-fill layout-align="center center">
-            <form class="StLog" #StLog="ngForm" (ngSubmit)='StLog()'>
+            <form class="StLog" #StLog="ngForm" (ngSubmit)="stLog()">
               {{StLog.value | json }}
-              <table class="table">
-                <tr>
-                  <td>
-                    <select class="custom-select" name="StationAddr"  [(ngModel)]="StationAddr">
-                      <option selected>Select Your Station</option>
-                      <option value={{St.StatAddr}} *ngFor="let St of Station">{{St.name}}</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td><input class="form-control ds-input" type="text" name="StPass" placeholder="Enter Password"
-                      [(ngModel)]="StPass"></td>
-                </tr>
-                <tr>
-                  <td>
-                    <button type="submit" class="btn btn-success">Login</button>
-                  </td>
-                </tr>
-              </table>
+
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Select Your Station</label>
+                    </div>
+                <select class="custom-select" id="inputGroupSelect01" name="StationAddr" [(ngModel)]="StationAddr">
+                  <option value={{St.StatAddr}} *ngFor="let St of Station">{{St.name}}</option>
+                </select>
+              </div>
+              <input class="form-control ds-input" type="text" name="StPass" placeholder="Enter Password"
+                [(ngModel)]="StPass"><br>
+              <button type="submit" class="btn btn-success">Login</button>
             </form>
           </div>
         </div>
